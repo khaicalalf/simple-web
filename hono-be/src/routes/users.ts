@@ -32,26 +32,3 @@ userRoute.post("/signin", async (c) => {
   const token = generateToken({ id: user.id, email: user.email });
   return c.json({ token });
 });
-
-// Read All
-userRoute.get("/", async (c) => {
-  const { rows } = await pool.query(
-    "SELECT id, name, email, created_at FROM users"
-  );
-  return c.json(rows);
-});
-
-// Update
-userRoute.put("/:id", async (c) => {
-  const id = c.req.param("id");
-  const { name } = await c.req.json();
-  await pool.query("UPDATE users SET name=$1 WHERE id=$2", [name, id]);
-  return c.json({ message: "User updated" });
-});
-
-// Delete
-userRoute.delete("/:id", async (c) => {
-  const id = c.req.param("id");
-  await pool.query("DELETE FROM users WHERE id=$1", [id]);
-  return c.json({ message: "User deleted" });
-});
