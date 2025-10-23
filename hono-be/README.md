@@ -34,13 +34,13 @@ git clone
 cd hono-be
 ```
 
-    Install dependencies
+2. Install dependencies
 
 ```bash
 npm install
 ```
 
-    Setup database di pgAdmin atau CLI PostgreSQL:
+3. Setup database di pgAdmin atau CLI PostgreSQL:
 
 ```bash
 CREATE DATABASE auth_demo;
@@ -60,7 +60,7 @@ CREATE TABLE posts (
 );
 ```
 
-    Buat file .env
+4. Buat file .env
 
 ```bash
 DATABASE_URL=postgres://postgres:password@localhost:5432/auth_demo
@@ -68,7 +68,7 @@ JWT_SECRET="bebas"
 PORT=3000
 ```
 
-    Jalankan server:
+5. Jalankan server:
 
 ```bash
 npx tsx src/index.ts
