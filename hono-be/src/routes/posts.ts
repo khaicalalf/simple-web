@@ -23,6 +23,24 @@ postRoute.get("/", async (c) => {
   return c.json(rows);
 });
 
+//Read one
+postRoute.get("/:id", async (c) => {
+  try {
+    const id = c.req.param("id");
+    const { rows } = await pool.query(
+      "SELECT id, title, description, created_at FROM posts WHERE id=$1",
+      [id]
+    );
+    if (rows.length === 0) {
+      return c.json({ error: "Post not found" }, 404);
+    }
+    return c.json(rows[0]);
+  } catch (err) {
+    console.error("GET /posts/:id error:", err);
+    return c.json({ error: "Internal Server Error" }, 500);
+  }
+});
+
 // Update
 postRoute.put("/:id", async (c) => {
   const id = c.req.param("id");

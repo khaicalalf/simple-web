@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import { logout } from "@/lib/auth";
 import { apiFetch } from "@/lib/api";
 import PostModal from "../components/modal";
+import Link from "next/link";
 
 interface Post {
   id: string;
@@ -116,7 +117,15 @@ export default function Dashboard() {
             )}
             {posts.map((p) => (
               <tr key={p.id}>
-                <td>{p.title}</td>
+                <td>
+                  {" "}
+                  <Link
+                    href={`/posts/${p.id}`}
+                    className="btn btn-ghost btn-xs no-underline normal-case hover:bg-base-200"
+                  >
+                    {p.title}
+                  </Link>
+                </td>
                 <td>{p.description}</td>
                 <td className="text-center space-x-2">
                   <button
