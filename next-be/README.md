@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🪐 Simple Auth Frontend (Next.js + TypeScript)
 
-## Getting Started
+Frontend sederhana untuk sistem autentikasi & CRUD posts, terhubung dengan backend Hono.js.  
+Fitur ini mendukung login JWT, tambah/edit/hapus posts, dan proteksi route dengan token.
 
-First, run the development server:
+## 🚀 Tech Stack
+
+- [Next.js 16 (App Router)](https://nextjs.org/)
+- TypeScript
+- Tailwind CSS and DaisyUI
+- Fetch API / Custom `apiFetch` helper
+- JWT Authorization
+
+---
+
+## 📦 Fitur Utama
+
+- ✨ **Sign Up & Sign In**
+- 🔐 Token JWT disimpan di `localStorage`
+- 👤 Dashboard: lihat semua posts (protected route)
+- ➕ Tambah post via modal
+- ✏️ Edit post
+- 🗑️ Delete post
+- 🚪 Logout
+
+---
+
+## ⚙️ Instalasi
+
+1. Clone repository
+
+```bash
+git clone
+cd next-be
+```
+
+    Install dependencies
+
+```bash
+npm install
+```
+
+    Buat file .env.local
+
+```bash
+NEXT_PUBLIC_API_URL=http://localhost:3000
+```
+
+    Jalankan development server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+    Buka di browser:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+http://localhost:3001
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+(pastikan jalankan dulu backend agar port tidak bentrok dengan backend)
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+🧠 Auth Flow
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+    Login ➝ dapat JWT ➝ disimpan di localStorage.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+    apiFetch otomatis menambahkan Authorization: Bearer <token> ke setiap request yang ke /protected/*.
 
-## Deploy on Vercel
+    Middleware di backend akan verifikasi token sebelum mengizinkan akses.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+🧰 Catatan Tambahan
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+    Pastikan backend sudah running (http://localhost:3000).
+
+    Kalau dapat error 401 Unauthorized, cek apakah token sudah tersimpan.
+
+    Untuk reset token: localStorage.removeItem('token') di DevTools.
+
+---
+
+📜 Lisensi
+
+MIT License © 2025 ✨
