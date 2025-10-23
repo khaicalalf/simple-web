@@ -11,6 +11,7 @@ export default function SignInPage() {
   const router = useRouter();
 
   const handleSignin = async () => {
+    setLoading(true);
     const res = await fetch(`${API_URL}/users/signin`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -21,6 +22,7 @@ export default function SignInPage() {
     if (data.token) {
       localStorage.setItem("token", data.token);
       setMessage("Login success 🚀");
+      setLoading(false);
       router.push("/dashboard");
     } else {
       setMessage(data.error || "Failed");
@@ -29,9 +31,9 @@ export default function SignInPage() {
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-base-200">
-      <div className="card w-full max-w-sm shadow-xl bg-base-100">
+      <div className="card w-full max-w-sm shadow-xl">
         <div className="card-body">
-          <h1 className="text-2xl font-bold mb-4 text-center">Sign In</h1>
+          <h1 className="text-5xl font-bold mb-4">Hello there</h1>
 
           <div className="form-control mb-3">
             <label className="label">
@@ -75,6 +77,9 @@ export default function SignInPage() {
             >
               {loading ? "Signing in..." : "Sign In"}
             </button>
+          </div>
+          <div className="w-full my-4 items-center justify-center justify-items-center flex">
+            <a href="/signup">don&apos;t have an account?</a>
           </div>
         </div>
       </div>
