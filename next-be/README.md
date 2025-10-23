@@ -34,25 +34,25 @@ git clone
 cd next-be
 ```
 
-    Install dependencies
+2. Install dependencies
 
 ```bash
 npm install
 ```
 
-    Buat file .env.local
+3. Buat file .env.local
 
 ```bash
 NEXT_PUBLIC_API_URL=http://localhost:3000
 ```
 
-    Jalankan development server
+4. Jalankan development server
 
 ```bash
 npm run dev
 ```
 
-    Buka di browser:
+5. Buka di browser:
 
 http://localhost:3001
 
